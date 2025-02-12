@@ -3,7 +3,7 @@ import * as Linking from 'expo-linking'
 import { openAuthSessionAsync } from 'expo-web-browser'
 
 export const config = {
-  platform: 'com.pseudo.restate',
+  platform: 'com.ctrlaltfix.realstate',
   endpoint: process.env.EXPO_PUBLIC_APPWRITE_ENDPOINT,
   projectId: process.env.EXPO_PUBLIC_APPWRITE_PROJECT_ID,
 }
@@ -11,10 +11,11 @@ export const config = {
 //export new version of the appwrite client
 export const client = new Client();
 
+
 client
   .setEndpoint(config.endpoint!)
   .setProject(config.projectId!)
-  .setPlatform(config.platform!)
+  .setPlatform(config.platform!);
 
 
 //functionality for appwrite
@@ -67,15 +68,15 @@ export async function logout() {
 export async function getCurrentUser() {
   try {
     const response = await account.get();
-    //if no response, throw an error
     if (!response) throw new Error('Failed to get current user');
-    //return the response and get user avatar
     if (response.$id) {
       const userAvatar = await avatar.getInitials(response.name);
       return {
-        ...response,
-        avatar: userAvatar,
-      }
+        $id: response.$id,
+        name: response.name,
+        email: response.email,
+        avatar: userAvatar.toString()  // Convert URL to string
+      };
     }
     return null;
   } catch (error) {
