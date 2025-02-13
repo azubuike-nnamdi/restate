@@ -42,7 +42,7 @@ export function Card({ onPress }: Props) {
         <Text className="text-black-300 text-base font-rubikBold">Modern Apartment</Text>
         <Text className="text-black-300 text-xs font-rubik">25, Falomo, Ikoyi, Lagos State</Text>
 
-        <View className='flex flex-row items-center justify-betweenmt-2'>
+        <View className='flex flex-row items-center justify-between mt-2'>
           <Text className='text-primary-300 text-base font-rubik'>N1,500,000</Text>
           <Image source={icons.heart} className='w-5 h-5 mr-2' tintColor={"#191d31"} />
         </View>
