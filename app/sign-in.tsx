@@ -40,5 +40,3 @@ export default function SignIn() {
     </SafeAreaView>
   )
 }
-
-const styles = StyleSheet.create({})
